@@ -9,7 +9,7 @@ brew install stow
 
 Populate directories:
 ```bash
-make all
+make stow
 ```
 
 Unpopulate directories:
