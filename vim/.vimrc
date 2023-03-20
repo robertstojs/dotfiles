@@ -3,8 +3,8 @@ set noswapfile
 syntax on
 set tabstop=4
 set shiftwidth=4
-set expandtab
-set ai
+set noexpandtab
+set autoindent
 set relativenumber
 set hlsearch
 set ruler
