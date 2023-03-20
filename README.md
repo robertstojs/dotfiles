@@ -1,18 +1,45 @@
-# Dotfiles
+# 🎯 Dotfiles
 
-My dotfiles for MacOS.
+This repository contains MacOS dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
-Install GNU Stow:
+## Prerequisites
+
+Install [Homebrew](https://brew.sh/) on MacOS.
+
+## Install GNU Stow
+
 ```bash
 brew install stow
 ```
 
-Populate directories:
+## Commands
+
+### Symlink dotfiles
+
 ```bash
 make stow
 ```
 
-Unpopulate directories:
+### Symlink dotfiles with custom verbosity (0 to 4)
+
+```bash
+make stow-verbose VERBOSITY=1
+```
+
+### Dry-run (preview actions)
+
+```bash
+make dry-run
+```
+
+### Update symlinks and remove stale ones
+
+```bash
+make restow
+```
+
+### Remove symlinks
+
 ```bash
 make delete
 ```
