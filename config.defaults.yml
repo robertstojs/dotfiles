@@ -1,0 +1,24 @@
+---
+brew_taps:
+
+brew_packages:
+  - ansible
+  - go
+  - coreutils
+  - htop
+  - iperf
+  - jq
+  - nmap
+  - nodejs
+  - tmux
+  - neovim
+
+cask_packages:
+  - 1password
+  - discord
+  - brave-browser
+
+stow:
+  - vim
+  - tmux
+  - kitty
