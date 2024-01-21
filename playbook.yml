@@ -1,0 +1,13 @@
+---
+- name: Install dotfiles
+  hosts: localhost
+  roles:
+    - role: geerlingguy.mac.homebrew
+      when: ansible_distribution == 'MacOSX'
+      tags: brew
+    - role: brew
+      when: ansible_distribution == 'MacOSX'
+      tags: brew
+    - stow
+
+  
