@@ -1,0 +1,35 @@
+---
+brew_taps:
+  - homebrew/autoupdate
+  - homebrew/cask-versions
+  - homebrew/cask-fonts
+
+brew_packages:
+  - ansible
+  - bitwarden-cli
+  - coreutils
+  - ffmpeg
+  - git-extras
+  - go
+  - gpg2
+  - htop
+  - iperf
+  - jq
+  - nmap
+  - pinentry-mac
+  - terminal-notifier
+  - wget
+  - yt-dlp
+  - stow
+  #- zplug
+  #- zsh
+
+cask_packages:
+  - 1password
+  - appcleaner
+  - bitwarden
+  - discord
+  - docker
+  - kitty
+  - visual-studio-code
+  - vlc
