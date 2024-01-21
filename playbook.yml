@@ -8,6 +8,7 @@
     - role: brew
       when: ansible_distribution == 'MacOSX'
       tags: brew
-    - stow
+    - role: stow
+      tags: stow
 
   
