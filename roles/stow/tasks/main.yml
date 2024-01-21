@@ -1,0 +1,15 @@
+---
+- name: Find all directories in the files directory
+  find:
+    paths: "{{ role_path }}/files"
+    file_type: directory
+  register: stow_directories
+
+- name: Stow dotfiles
+  command:
+    cmd: "stow -v -t {{ ansible_env.HOME }} -d {{ role_path }}/files {{ item.path | basename }}"
+  loop: "{{ stow_directories.files }}"
+  loop_control:
+    label: "{{ item.path | basename }}"
+  register: result
+  failed_when: '"conflicts" not in result.stderr and result.failed'
