@@ -1,9 +1,9 @@
 # dotfiles
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-* Entirely controlled with **Ansible**
-* Packages installed using **Homebrew**
-* Configurations managed by **GNU Stow**
+* Automated with **Ansible**.
+* Packages installed with **Homebrew**.
+* Dotfiles managed with **GNU Stow**.
 
 ```shell
 git clone https://github.com/robertstojs/dotfiles.git
