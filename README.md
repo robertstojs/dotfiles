@@ -6,7 +6,7 @@
 * Automated with **Ansible**.
 * Packages installed with **Homebrew**.
 * Dotfiles managed with **GNU Stow**.
-* Testing another line
+* No third-party **dependencies**.
 
 <br clear="right">
 
