@@ -35,10 +35,7 @@ run_playbook:
 		done; \
 	fi; \
 	echo "Running Ansible playbook with tags: $$TAGS"; \
-	ANSIBLE_CONFIG=$$(pwd)/ansible.cfg ansible-playbook $$(pwd)/playbook.yml --ask-become-pass $$TAGS_ARG; \
-	if [ -n "$(ARGS)" ] && [ "$(ARGS)" != "default" ]; then \
-		exit 0; \
-	fi
+	ANSIBLE_CONFIG=$$(pwd)/ansible.cfg ansible-playbook $$(pwd)/playbook.yml --ask-become-pass $$TAGS_ARG
 
 notify:
 	@command -v terminal-notifier >/dev/null 2>&1 && terminal-notifier -title "dotfiles: Setup complete" -message "Successfully set up environment."
@@ -62,4 +59,6 @@ help:
 
 # Override the default target to pass arguments to run_playbook
 %:
-	@$(MAKE) ARGS="$@" run_playbook
+	@if [ -n "$(MAKECMDGOALS)" ]; then \
+		$(MAKE) ARGS="$(MAKECMDGOALS)" run_playbook; \
+	fi
