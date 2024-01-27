@@ -8,7 +8,7 @@
 ```shell
 git clone https://github.com/robertstojs/dotfiles.git
 cd dotfiles
-bash bootstrap all
-# or when only running a specific tag (defaults to 'stow')
-bash bootstrap <tag>
+make
+# or when only running a specific tag (defaults to 'all')
+make stow
 ```
