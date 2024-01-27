@@ -1,5 +1,5 @@
 # dotfiles
-<img src="./img/logo.svg" align="right" width="196px">
+<img src="./img/logo.svg" align="right" width="156px">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
