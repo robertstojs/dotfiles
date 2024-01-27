@@ -1,4 +1,4 @@
-.PHONY: check_ansible install_ansible install_collections run_playbook notify complete
+.PHONY: check_ansible install_ansible install_collections run_playbook notify complete help
 
 default: check_ansible install_collections run_playbook notify complete
 
@@ -17,16 +17,28 @@ install_collections:
 	@echo "Collections installed successfully."
 
 run_playbook:
-	@echo "Running Ansible playbook..."
-	@TAGS_ARG="--tags all"; \
-	if [ -n "$(ARGS)" ]; then \
+	@TAGS=""; \
+	VALID_TAGS="all $$(awk '/tags:/{print $$2}' playbook.yml | tr -d '[]' | sort | uniq)"; \
+	if [ -z "$(ARGS)" ] || [ "$(ARGS)" = "default" ]; then \
+		TAGS="all"; \
+		TAGS_ARG="--tags all"; \
+	else \
+		TAGS="$(ARGS)"; \
 		TAGS_ARG=""; \
 		for arg in $(ARGS); do \
-			TAGS_ARG="$$TAGS_ARG --tags $$arg"; \
+			if echo "$$VALID_TAGS" | grep -q -w "$$arg"; then \
+				TAGS_ARG="$$TAGS_ARG --tags $$arg"; \
+			else \
+				echo "Error: Invalid tag '$$arg'"; \
+				exit 1; \
+			fi; \
 		done; \
-		echo "Extra arguments passed: $(ARGS)"; \
 	fi; \
-	ANSIBLE_CONFIG=$$(pwd)/ansible.cfg ansible-playbook $$(pwd)/playbook.yml --ask-become-pass $$TAGS_ARG
+	echo "Running Ansible playbook with tags: $$TAGS"; \
+	ANSIBLE_CONFIG=$$(pwd)/ansible.cfg ansible-playbook $$(pwd)/playbook.yml --ask-become-pass $$TAGS_ARG; \
+	if [ -n "$(ARGS)" ] && [ "$(ARGS)" != "default" ]; then \
+		exit 0; \
+	fi
 
 notify:
 	@command -v terminal-notifier >/dev/null 2>&1 && terminal-notifier -title "dotfiles: Setup complete" -message "Successfully set up environment."
@@ -38,6 +50,7 @@ help:
 	@echo "Usage: make <tag> (defaults to "\"all"\")"
 	@echo ""
 	@echo "Available tags:"
+	@echo "all"
 	@awk '/tags:/{print $$2}' playbook.yml | tr -d '[]' | sort | uniq
 	@echo ""
 	@echo "Available commands:"
