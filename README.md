@@ -10,7 +10,7 @@
 
 <br clear="right">
 
-```shell
+```makefile
 make help
 Usage: make <tag> (defaults to "all" if empty)
 
