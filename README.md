@@ -12,7 +12,7 @@
 
 ```shell
 make help
-Usage: make <tag> (defaults to "all")
+Usage: make <tag> (defaults to "all" if empty)
 
 Available tags:
 all
