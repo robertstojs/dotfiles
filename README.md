@@ -11,7 +11,6 @@
 <br clear="right">
 
 ```makefile
-make help
 Usage: make <tag> (defaults to "all" if empty)
 
 Available tags:
